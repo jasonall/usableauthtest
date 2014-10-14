@@ -9,7 +9,7 @@ googleapis.credentials.getApplicationDefault(function(err, creds) {
   if (err) {
     console.log('Failed to get application default: ' + String(err));
   } else {
-    if (creds.createScopedRequired) {
+    if (creds.createScopedRequired()) {
       creds = creds.createScoped(scopes);
     }
 
