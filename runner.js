@@ -9,26 +9,22 @@ googleapis.credentials.getApplicationDefault(function(err, creds) {
   if (err) {
     console.log('Failed to get application default: ' + String(err));
   } else {
-    var scopedCreds = creds.createScoped(scopes);
+    if (creds.createScopedRequired) {
+      creds = creds.createScoped(scopes);
+    }
 
-    scopedCreds.authorize(function(err, tokens) {
+    var youtube = googleapis.youtube({ version: 'v3', auth: creds });
+
+    // Create a search
+    var search = youtube.search.list({
+      q: 'cats',
+      part: 'snippet',
+      maxResults: 50
+    }, function (err, result) {
       if (err) {
-        console.log('Failed to authorize: ' + String(err));
+        console.log('Youtube search failed: %j', err);
       } else {
-        var youtube = googleapis.youtube({ version: 'v3', auth: scopedCreds });
-
-        // Create a search
-        var search = youtube.search.list({
-          q: 'cats',
-          part: 'snippet',
-          maxResults: 50
-        }, function (err, result) {
-          if (err) {
-            console.log('Youtube search failed: ' + String(err));
-          } else {
-            console.log(result);
-          }
-        });
+        console.log(result);
       }
     });
   }
