@@ -22,7 +22,6 @@ googleapis.credentials.getApplicationDefault(function(err, creds) {
       maxResults: 50
     }, function (err, result) {
       if (err) {
-
         console.log('Youtube search failed: %j', err);
       } else {
         console.log(result);
