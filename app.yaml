@@ -8,14 +8,14 @@ manual_scaling:
 
 handlers:
 
-- url: /(.*\.(html|css|js))
-  static_files: static/\1
-  upload: static/(.*\.(html|css|js))
+#- url: /(.*\.(html|css|js))
+#  static_files: static/\1
+#  upload: static/(.*\.(html|css|js))
 
-- url: /
-  static_files: static/index.html
-  upload: static/index.html
+#- url: /
+#  static_files: static/index.html
+#  upload: static/index.html
 
-- url: /.*
-  script: app.js
-  login: required
+#- url: /.*
+#  script: app.js
+#  login: required
