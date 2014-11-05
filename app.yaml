@@ -6,6 +6,9 @@ api_version: 1
 manual_scaling:
   instances: 1
 
+vm_settings:
+  service_account_scopes: https://www.googleapis.com/auth/youtube
+
 handlers:
 
 #- url: /(.*\.(html|css|js))
